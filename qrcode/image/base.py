@@ -9,6 +9,19 @@ if TYPE_CHECKING:
 
 DrawerAliases = Dict[str, Tuple[Type[QRModuleDrawer], Dict[str, Any]]]
 
+from enum import Enum
+
+
+class EyeShapeEnum(Enum):
+    square = "square"
+    circle = "circle"
+    square_rounded_1 = "square_rounded_1"
+    square_rounded_2 = "square_rounded_2"
+    square_rounded_3 = "square_rounded_3"
+    square_rounded_4 = "square_rounded_4"
+    squircle = "square_rounded_4"
+    leaf = "square_rounded_2"
+
 
 class BaseImage:
     """
@@ -125,6 +138,8 @@ class BaseImageWithDrawer(BaseImage):
         *args,
         module_drawer: Union[QRModuleDrawer, str, None] = None,
         eye_drawer: Union[QRModuleDrawer, str, None] = None,
+        eye_frame_shape: EyeShapeEnum = "square",
+        eye_ball_shape: EyeShapeEnum = "square",
         **kwargs,
     ):
         self.module_drawer = (
